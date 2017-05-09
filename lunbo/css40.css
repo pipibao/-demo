@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	padding: 0;
+	margin: 0;
+	
+}
+body {
+	background:rgba(0,0,0,.85)
+}
+
+#container {
+	position: relative;
+    overflow: hidden;
+	margin: 150px auto;
+	box-sizing: border-box;
+	border: 1px solid #e7e7e3;
+	box-shadow: 1px 1px 15px #e7e7e3;
+	border-radius: 5px;
+}
+
+#container > #box {
+	position: relative;
+	width: 300000px;
+	height: 100%;
+	overflow: hidden ;
+}
+
+#container > #box .bg {
+	float: left;
+    
+}
+
+#container > img {
+	position: relative;
+	top: -50px;
+	float: left;
+	display: block;
+	margin-left: 30px;
+	box-shadow: 1px 1px 15px #e7e7e3;
+	border-radius: 5px;
+	cursor: pointer;
+	z-index: 2
+}
+
+#container > .active {
+	position : relative;
+	top: -53px;
+	margin-left: 27px;
+	border: 3px solid pink;
+	border-radius: 9px;
+	z-index: 3;
+	cursor: pointer;
+}

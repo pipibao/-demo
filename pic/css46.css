@@ -32,7 +32,11 @@ body {
 	border: 1px solid #e7e7e3;
 	border-radius: 5px;
 	box-shadow: 1px 1px 15px #e7e7e3;
-	
+}
+#btn:hover {
+	cursor: pointer;
+	background: rgba(0,0,0,.85);
+	color: white;
 }
 #box > .show {
 	position: relative;
@@ -53,14 +57,10 @@ body {
 	transition: all .6s;
 }
 .container > img:hover {
+	cursor: pointer;
 	transform: scale(1.1)
 }
-.active {
-	display: block;
-	background: rgba(0,0,0,.85);
-	transition: all .6s;
-	
-}
+
 #box > .show .lft-btn {
 	position: absolute;
 	left: 10px;
@@ -70,9 +70,11 @@ body {
 	background: url("images/lun.png");
 	background-position: 0px 0;
 	z-index: 999;
+	transition: box-shadow .6s
 }
 #box > .show .lft-btn:hover {
-	background-position: -153px 0
+	background-position: -153px 0;
+	box-shadow: 1px 1px 15px #e7e7e3;
 }
 
 #box > .show .right-btn {
@@ -84,9 +86,11 @@ body {
 	background : url("images/lun.png");
 	background-position: -50px 0;
 	z-index: 999;
+	transition: box-shadow .6s
 }
 #box > .show .right-btn:hover {
-	background-position: -101px 0
+	background-position: -101px 0;
+	box-shadow: 1px 1px 15px #e7e7e3;
 }
 #box > .show img {
 	position: relative;

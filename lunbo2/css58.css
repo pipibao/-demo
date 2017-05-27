@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	overflow: hidden;
+}
+
+img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.box {
+	position: absolute;
+	bottom: 0;
+	width: 0;
+	height: 8px;
+	background: white;
+	z-index: 999;
+}
+.lft-btn {
+	position: absolute;
+	left: 20px;
+	width: 50px;
+	height: 140px;
+	background: url("images/lun.png") no-repeat center;
+	background-position: 0 0;
+	z-index: 4;
+}
+.lft-btn:hover {
+	background-position: -153px 0;
+}
+.rgt-btn {
+	position: absolute;
+	right: 20px;
+	width: 50px;
+	height: 140px;
+	background: url("images/lun.png") no-repeat center;
+	background-position: -50px 0;
+	z-index: 4;
+}
+.rgt-btn:hover {
+	background-position: -101px 0;
+}
+	
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 14px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        }
+        body,html {
+            background: lightslategray;
+        }
+        #container {
+            position: relative;
+            width: 1000px;
+            height: 402px;
+            margin: 100px auto;
+            border: 1px solid lightskyblue;
+            overflow: hidden;
+            background: lightgoldenrodyellow;
+            background: -webkit-linear-gradient(top,lightgoldenrodyellow,lavenderblush,lightcyan);
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 2px 2px 15px #e7e7e3;
+            -moz-box-shadow: 2px 2px 15px #e7e7e3;
+            box-shadow: 2px 2px 15px #e7e7e3;
+        }
+        #container li {
+            opacity: 1;
+            width: 80%;
+            height: 100px;
+            margin: 0 auto;
+            border-bottom: 1px solid lightslategray;
+
+        }
+        #container li h2 {
+            padding: 10px;
+            line-height: 30px;
+            height: 30px;
+
+        }
+        #container li h2:hover {
+            cursor: pointer;
+            color: lightslategrey;
+        }
+        #container li p {
+            padding-left: 10px;
+            line-height: 20px;
+            height: 20px;
+            font-size: 14px;
+            color: #616161;
+        }
+        #container li p:hover {
+            cursor: pointer;
+            color: lightslategrey;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div >
+        <ul id="test1">
+            <li>
+                <h2>标题一：高考题“诡异的光”标准答案出炉 作者能得几分</h2>
+                <p>这道阅读理解题，选用短篇小说《一种美味》。文章描写主人公6岁时，一家人第一次喝鱼汤发生的故事。 </p>
+            </li>
+            <li>
+                <h2>标题二：民进党“亲中爱台俱乐部”添新援 网友讽最无耻 </h2>
+                <p>
+                    张花冠昨日表示，赖清德的“亲中爱台”符合台湾现状，维持两岸关系和平，稳定来往，发展经济是“政府”基本立场
+                </p>
+            </li>
+            <li>
+                <h2>标题三：勒索病毒操纵者：将披露从美国盗走的俄核计划</h2>
+                <p>
+                    5月12日，全球多个国家的网络遭遇名为“想哭”的勒索软件攻击，据统计，涉及中国、英国、西班牙、俄罗斯等上百个国家和地区
+                </p>
+            </li>
+            <li>
+                <h2>标题四：环卫工制止乱倒垃圾遭殴打并泼脏物 打人者被拘</h2>
+                <p>
+                    中心创造性这些创造性存在创造性存在创造性创造性创造性创造性
+                </p>
+            </li>
+        </ul>
+        <ul id="test2">
+            <li>
+                <h2>标题一：高考题“诡异的光”标准答案出炉 作者能得几分</h2>
+                <p>这道阅读理解题，选用短篇小说《一种美味》。文章描写主人公6岁时，一家人第一次喝鱼汤发生的故事。</p>
+            </li>
+            <li>
+                <h2>标题二：民进党“亲中爱台俱乐部”添新援 网友讽最无耻 </h2>
+                <p>
+                    张花冠昨日表示，赖清德的“亲中爱台”符合台湾现状，维持两岸关系和平，稳定来往，发展经济是“政府”基本立场
+                </p>
+            </li>
+            <li>
+                <h2>标题三：勒索病毒操纵者：将披露从美国盗走的俄核计划</h2>
+                <p>
+                    5月12日，全球多个国家的网络遭遇名为“想哭”的勒索软件攻击，据统计，涉及中国、英国、西班牙、俄罗斯等上百个国家和地区
+                </p>
+            </li>
+            <li>
+                <h2>标题四：环卫工制止乱倒垃圾遭殴打并泼脏物 打人者被拘</h2>
+                <p>
+                    中心创造性这些创造性存在创造性存在创造性创造性创造性创造性
+                </p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<script>
+    var container = document.getElementById("container");
+    var test1 = document.getElementById("test1");
+    var li = test1.getElementsByTagName("li");
+    var height = parseInt(window.getComputedStyle(test1).height);
+    var duration = 2000,time=20,target = 1;
+
+    for (var i = 0; i < li.length; i++) {
+        li[i].style.opacity = 1;
+    }
+    function anim () {
+        var scroll = container.scrollTop;
+        container.scrollTop = scroll+1;
+        for (var i = 0; i < li.length; i++) {
+            if (li[i].offsetTop-container.scrollTop <= 40) {
+                li[i].style.opacity -= 1/(duration/time);
+            }
+        }
+        if (container.scrollTop === height) {
+            container.scrollTop = 0;
+            for (var i = 0; i < li.length; i++) {
+                li[i].style.opacity = 1;
+            }
+        }
+
+    }
+    var move = window.setInterval(anim,time);
+    container.onmouseover = function () {
+        clearInterval(move)
+    }
+    container.onmouseout = function () {
+        move = window.setInterval(anim,time)
+    }
+</script>
+</body>
+</html>

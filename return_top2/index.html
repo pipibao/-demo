@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body,html{
+            background: lavenderblush;
+            background: -webkit-linear-gradient(top,lavenderblush,lightpink,lightcoral,lightseagreen,skyblue)
+        }
+        #container>div {
+            width: 100%;
+            height: 800px;
+            text-align: center;
+        }
+        ul {
+            position: fixed;
+            top: 300px;
+            left: 40px;
+            width : 80px;
+
+        }
+        ul > li {
+            width: 100%;
+            height: 30px;
+            margin-top: 5px;
+            background: skyblue;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer
+
+        }
+        ul > li.active {
+            font-size: 20px;
+            color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div >第一屏</div>
+    <div>第二屏</div>
+    <div>第三屏</div>
+    <div>第四屏</div>
+
+</div>
+<ul>
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+
+</ul>
+<script>
+    var oul = document.getElementsByTagName("ul")[0]
+    var oli = oul.getElementsByTagName("li");
+    var container = document.getElementById("container");
+    var odiv = container.getElementsByTagName("div");
+    var arr = [],duration = 500;
+    for (var i = 0; i < oli.length; i++) {
+        var offsetTop = odiv[i].offsetTop;
+        arr.push(offsetTop)
+        oli[i].index = i;
+        oli[i].onclick = function () {
+            window.clearInterval(anim);
+            var time = 0;
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            var change = arr[this.index]-scrollTop,begin = scrollTop;
+            var anim = window.setInterval(function(){
+                time += 10;
+                if (time >= duration) {
+                    window.clearInterval(anim)
+                }
+                var a = linear(time,duration,change,begin);
+                document.documentElement.scrollTop  = a;
+                document.body.scrollTop = a;
+            },10)
+        }
+        window.onscroll = function () {
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            if (scrollTop < arr[1]) {
+                oul.style.display = "none"
+            } else {
+                oul.style.display = "block"
+            }
+            for (var i = 0; i < oli.length; i++) {
+                if (scrollTop <= arr[i]+400 && scrollTop >= arr[i]) {
+                    oli[i].className ="active"
+                }else {
+                    oli[i].className = ""
+                }
+            }
+        }
+
+    }
+    function linear (t,d,c,b) {
+        return t/d*c+b
+    }
+
+
+</script>
+</body>
+</html>

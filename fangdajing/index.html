@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #container {
+            position: relative;
+        }
+        #box {
+            position: absolute;
+            width: 355px;
+            height: 200px;
+            left: 100px;
+            top: 20px;
+
+        }
+        #box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 1px 1px 15px 0 #000
+        }
+        #target {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background: #000;
+            opacity: 0.6;
+            filter: alpha(opacity = 60);
+            display: none;
+            border-radius: 50%;
+            box-shadow: 1px 1px 15px ;
+            cursor: move;
+        }
+        #big {
+            position: absolute;
+            top: 20px;
+            left: 480px;
+            width: 355px;
+            height: 200px;
+            overflow: hidden;
+            display: none;
+            box-shadow: 1px 1px 15px ;
+            border-radius: 5px
+        }
+        #big img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 700%;
+            height: 400%
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="images/l9.jpg" alt="">
+        <div id="target"></div>
+    </div>
+    <div id="big">
+        <img src="images/l9.jpg" alt="">
+    </div>
+
+<script>
+    var container = document.getElementById("container");
+    var box = document.getElementById("box"),target = document.getElementById("target"),big = document.getElementById("big")
+    box.onmouseenter = function (e) {
+        e = e || window.event;
+        target.style.display = "block";
+        big.style.display = "block";
+        this.onmousemove = function (e) {
+            e = e || window.event;
+            direc(e)
+        }
+    }
+    box.onmouseleave = function () {
+        target.style.display = "none";
+        big.style.display = "none";
+    }
+
+    function direc (event) {
+        var left = event.clientX - box.offsetLeft - target.offsetWidth/2;
+        var top = event.clientY - box.offsetTop - target.offsetHeight/2;
+        var maxL = box.offsetWidth - target.offsetWidth,minL = 0;
+        var maxT = box.offsetHeight - target.offsetHeight,minT = 0;
+        var tempL = 0,tempT = 0,oimg = big.getElementsByTagName("img")[0];
+        if (left > maxL) {
+            target.style.left = maxL + "px";
+            tempL = maxL;
+        } else if (left < minL) {
+            target.style.left = minL + "px";
+            tempL = minL;
+        } else {
+            target.style.left = left + "px";
+            tempL = left
+        }
+        if (top > maxT) {
+            target.style.top = maxT + "px";
+            tempT = maxT;
+        } else if (top < minT) {
+            target.style.top = minT + "px";
+            tempT = minT;
+        } else {
+            target.style.top = top + "px"
+            tempT = top;
+        }
+        oimg.style.left = -tempL*7 + "px";
+        oimg.style.top = -tempT*4 + "px"
+    }
+</script>
+</body>
+</html>
